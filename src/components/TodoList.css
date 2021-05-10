@@ -1,0 +1,38 @@
+.todo-list ul {
+    display: inline-block;
+    list-style-type: none;
+    padding: 1em;
+}
+
+.todo-list .done {
+    text-decoration: line-through;
+    color: #6F7071;
+}
+
+.todo-list li {
+    padding: 0.1em 0.5em;
+}
+
+.todo-list li:hover {
+    cursor: pointer;
+    background-color: #8FB8FA;
+}
+
+.todo-list button {
+    background-color: #6964F5;
+    color: #ACCFFA;
+    border: none;
+    padding: 0.4em 1.0em;
+    border-radius: 0.3em;
+    margin-left: 1em;
+}
+
+.todo-list button:hover {
+    cursor: pointer;
+}
+
+.todo-list input {
+    padding: 0.4em 1.0em;
+    border-radius: 0.3em;
+    border: none;
+}
