@@ -5,16 +5,17 @@ import './TodoList.css'
 
 const TodoList = () => {
 	const [todoList, setTodoList] = useState([
-		{ id: 1, title: 'Study React', isDone: false },
-		{ id: 2, title: 'Wash windows', isDone: true },
-		{ id: 3, title: 'Study more', isDone: false }
+		{ id: 1, title: 'Study React', isDone: false, editing:false },
+		{ id: 2, title: 'Wash windows', isDone: true, editing:false },
+		{ id: 3, title: 'Study more', isDone: false,editing:false }
 	])
+	//const[editing,setEditing] =useState(false)
 
 	const addTodoItem = title => {
 		// todoList.push  <- fungerar inte i React
 		setTodoList( [
 			...todoList,
-			{ id: todoList.length + 1, title, isDone: false }
+			{ id: todoList.length + 1, title, isDone: false, editing:false}
 		] )
 	}
 
@@ -29,14 +30,47 @@ const TodoList = () => {
 		}))
 	}
 
+	const deleteItem = (id)=>{
+		setTodoList(todoList.filter(list=>list.id!==id))
+	}
+	
+	const editItem =(id)=>{
+		setTodoList(
+			todoList.map(todo => {
+			  if (todo.id === id) {
+				return { ...todo, editing: true }
+			} else {
+				return todo
+			  }
+			
+			})
+       
+	
+		)}
+	const setUpdate = (updatedTitle, id) => {
+		setTodoList(
+		  todoList.map(todo => {
+			if (todo.id === id) {
+			  todo.title = updatedTitle
+			}
+			return todo
+		  })
+	
+		)}
 	// Higher order functions for arrays: forEach, map, filter, find...
 	const jsxList = todoList.map(todoItem => (
 		<li key={todoItem.id} className={todoItem.isDone ? 'done' : ''}>
 			{todoItem.title}
 			{todoItem.isDone ? null :
 				<button onClick={() => markAsDone(todoItem.id)}> Done </button>}
+				<button onClick={() => deleteItem(todoItem.id)}> Delete </button>
+				<button onClick={() => editItem(todoItem.id)} style={todoItem.editing?{display:'none'}:{display:'block'}}> Edit </button>
+				<input type="text" value={todoItem.title} style={todoItem.editing?{display:'block'}:{display:'none'}} className="textInput"onChange ={e=>setUpdate(e.target.value,todoItem.id)} />
 		</li>
 	))
+
+
+
 
 	return (
 		<div className="todo-list">
