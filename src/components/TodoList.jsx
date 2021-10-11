@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import AddTodo from './AddTodo'
-import './TodoList.css'
+import './TodoList.scss'
 
 
 const TodoList = () => {
@@ -78,6 +78,10 @@ const TodoList = () => {
 				{jsxList}
 			</ul>
 			<AddTodo addTodoItem={addTodoItem} />
+			<p className="interpolationExample">
+				<h1>Interpolation Example!!</h1>
+			</p>
+
 		</div>
 	)
 }

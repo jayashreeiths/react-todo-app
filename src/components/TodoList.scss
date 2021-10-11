@@ -1,12 +1,35 @@
-.todo-list ul {
+@import "../colors";
+
+/* .todo-list ul {
     display: inline-block;
     list-style-type: none;
     padding: 1em;
+} */
+
+.todo-list{
+    background-color: aqua;
+    ul{
+        display: inline-block;
+        list-style-type: none;
+        padding: 1em; 
+    }
+}
+
+
+@mixin paragraph-style{
+    font-size: 25;
+    color: blue;
+}
+
+.interpolationExample{
+    h1{
+    @include paragraph-style;
+    }
 }
 
 .todo-list .done {
     text-decoration: line-through;
-    color: #6F7071;
+    color: $textColor;
 }
 
 .todo-list li {
@@ -15,12 +38,12 @@
 
 .todo-list li:hover {
     cursor: pointer;
-    background-color: #8FB8FA;
+    background-color: $backgroundColor;
 }
 
 .todo-list button {
-    background-color: #6964F5;
-    color: #ACCFFA;
+    background-color:$backgroundColor;
+    color:$btnTextColor;
     border: none;
     padding: 0.4em 1.0em;
     border-radius: 0.3em;

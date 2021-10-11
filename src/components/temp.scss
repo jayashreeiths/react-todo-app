@@ -1,0 +1,8 @@
+/* @mixin paragraph-style($className,$fontSize,$fontColor){
+    #{$className} {
+        font-size: #{$fontSize}px;
+        color: #{$fontColor};
+      }
+}
+
+@include paragraph-style(".interpolationExample", 25, blue); */
