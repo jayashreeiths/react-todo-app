@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux';
+import {store} from './state/store';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* Any child component inside Provider will have access to store */}
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
